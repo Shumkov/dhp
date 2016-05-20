@@ -1,5 +1,10 @@
-Docker PHP interpreter
+DHP. Docker PHP interpreter
 ======================
+
+DHP is a wrapper around a PHP docker container. It provides transparent
+work with Dockerized PHP as you work with usual local PHP interpreter.
+
+P.S. i shit bash.
 
 Installation
 ------------
@@ -16,17 +21,24 @@ Installation
    composer global config repositories.dhp vcs https://git.itim.vn/coccoc/labs-dhp.git
    ```
 
-3. Install dhp:
+3. Install DHP:
 
    ```bash
-   composer global require coccoc/dhp
+   composer global require coccoc/dhp:*
    ```
+
+Upgrade
+-------
+
+Run `composer global update coccoc/dhp`
 
 Using
 -----
 
 You can use `dhp` command as usual PHP interpreter.
 Example: `dhp script.php` or `dhp -i`.
+
+xDebug is disabled by default. It will enable when you will start debug.
 
 For starting debugger pass `XDEBUG_CONFIG` env variable.
 Example: `XDEBUG_CONFIG="idekey=PHPSTORM" dhp script.php`
@@ -42,3 +54,7 @@ You have three ways to set options:
 1. As env variables in your shell. Example: `export DHP_EXPORT_ENV="APP_ENV"`
 2. Pass options before command. Example: `DHP_EXPORT_ENV="APP_ENV" dhp script.php`
 3. Create `.dhp` file with options in your project root path (recommended)
+
+Author
+------
+Ivan Shumkov <shumkov@coccoc.com>
