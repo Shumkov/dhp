@@ -1,0 +1,15 @@
+{
+  "name": "coccoc/dhp",
+  "description": "Docker PHP interpreter",
+  "type": "library",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Ivan Shumkov",
+      "email": "shumkov@coccoc.com"
+    }
+  ],
+  "bin": [
+    "bin/dhp"
+  ]
+}

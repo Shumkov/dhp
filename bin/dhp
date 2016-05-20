@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+deepReadLink() {
+    TARGET_FILE=$0
+
+    cd `dirname $TARGET_FILE`
+    TARGET_FILE=`basename $TARGET_FILE`
+
+    # Iterate down a (possible) chain of symlinks
+    while [ -L "$TARGET_FILE" ]
+    do
+        TARGET_FILE=`readlink $TARGET_FILE`
+        cd `dirname $TARGET_FILE`
+        TARGET_FILE=`basename $TARGET_FILE`
+    done
+
+    # Compute the canonicalized name by finding the physical path
+    # for the directory we're in and appending the target file.
+    PHYS_DIR=`pwd -P`
+    RESULT="$PHYS_DIR/$TARGET_FILE"
+
+    echo ${RESULT}
+}
+
+BINARY_DIR=$(dirname $(deepReadLink "$0"))
+
+# Load configuration
+. "$BINARY_DIR/../src/config.sh"
+
+# Fixes for transparent using in PhpStorm
+. "$BINARY_DIR/../src/phpStorm.sh"
+
+# Set ARG_ENV argument. We need to pass env variables to docker container.
+. "$BINARY_DIR/../src/env.sh"
+
+# Set ARG_XDEBUG and ARG_XDEBUG_PARAMS arguments. We need to pass xDebug settings.
+. "$BINARY_DIR/../src/xdebug.sh"
+
+docker run -i \
+           -v "${PWD}":"${PWD}" \
+           -v "${BINARY_DIR}":"${BINARY_DIR}" \
+           -v /tmp/:/tmp/ \
+           -v /private:/private \
+           -v ~/.composer:/root/.composer \
+           -w "${PWD}" \
+           --sig-proxy=true \
+           --net=qc \
+           --sig-proxy=true \
+           --pid=host \
+           --rm \
+           ${ARG_TTY} \
+           ${ARG_ENV} \
+           ${ARG_XDEBUG} "${ARG_XDEBUG_PARAMS}" \
+           ${DHP_PHP_IMAGE} \
+           php "$@"
