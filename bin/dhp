@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 deepReadLink() {
-    TARGET_FILE=$0
+    TARGET_FILE=$1
 
     cd `dirname $TARGET_FILE`
     TARGET_FILE=`basename $TARGET_FILE`
@@ -25,31 +25,16 @@ deepReadLink() {
 BINARY_DIR=$(dirname $(deepReadLink "$0"))
 
 # Load configuration
-. "$BINARY_DIR/../src/config.sh"
+source "$BINARY_DIR/../src/config.sh"
 
 # Fixes for transparent using in PhpStorm
-. "$BINARY_DIR/../src/phpStorm.sh"
+source "$BINARY_DIR/../src/phpStorm.sh"
 
 # Set ARG_ENV argument. We need to pass env variables to docker container.
-. "$BINARY_DIR/../src/env.sh"
+source "$BINARY_DIR/../src/env.sh"
 
 # Set ARG_XDEBUG and ARG_XDEBUG_PARAMS arguments. We need to pass xDebug settings.
-. "$BINARY_DIR/../src/xdebug.sh"
+source "$BINARY_DIR/../src/xdebug.sh"
 
-docker run -i \
-           -v "${PWD}":"${PWD}" \
-           -v "${BINARY_DIR}":"${BINARY_DIR}" \
-           -v /tmp/:/tmp/ \
-           -v /private:/private \
-           -v ~/.composer:/root/.composer \
-           -w "${PWD}" \
-           --sig-proxy=true \
-           --net=qc \
-           --sig-proxy=true \
-           --pid=host \
-           --rm \
-           ${ARG_TTY} \
-           ${ARG_ENV} \
-           ${ARG_XDEBUG} "${ARG_XDEBUG_PARAMS}" \
-           ${DHP_PHP_IMAGE} \
-           php "$@"
+# Run php docker image
+source "$BINARY_DIR/../src/runDockerContainer.sh"
