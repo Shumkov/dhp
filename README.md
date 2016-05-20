@@ -5,13 +5,17 @@ Installation
 ------------
 1. Install [composer](https://getcomposer.org).
 2. Add this line to your `~/.zshrc` or `~/.bashrc`:
+
    ```bash
    export PATH=~/.composer/vendor/bin:$PATH
    ```
+
 3. Add repository to composer:
+
    ```bash
    composer global config repositories.dhp vcs https://git.itim.vn/coccoc/labs-dhp.git
    ```
+
 3. Install dhp:
 
    ```bash
