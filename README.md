@@ -53,7 +53,7 @@ Available options:
 You have three ways to set options:
 1. As env variables in your shell. Example: `export DHP_EXPORT_ENV="APP_ENV"`
 2. Pass options before command. Example: `DHP_EXPORT_ENV="APP_ENV" dhp script.php`
-3. Create `.dhp` file with options in your project root path (recommended)
+3. Create `.env` file with options in your project root path (recommended)
 
 Author
 ------
