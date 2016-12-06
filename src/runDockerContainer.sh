@@ -8,10 +8,9 @@ docker run -i \
            -v ~/.composer:/root/.composer \
            -w "${PWD}" \
            --sig-proxy=true \
-           --net=qc \
-           --sig-proxy=true \
            --pid=host \
            --rm \
+           ${ARG_NET} \
            ${ARG_TTY} \
            ${ARG_ENV} \
            ${ARG_XDEBUG} "${ARG_XDEBUG_PARAMS}" \

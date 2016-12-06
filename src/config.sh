@@ -2,6 +2,7 @@
 
 # Get options from env
 DHP_DOCKER_IMAGE_FROM_ENV=${DHP_DOCKER_IMAGE}
+DHP_DOCKER_NET_FROM_ENV=${DHP_DOCKER_NET}
 DHP_EXPORT_ENV_FROM_ENV=${DHP_EXPORT_ENV}
 
 # Default values
@@ -24,6 +25,13 @@ fi
 if [[ -n "$DHP_DOCKER_IMAGE_FROM_ENV" ]]; then
     DHP_DOCKER_IMAGE="$DHP_DOCKER_IMAGE_FROM_ENV"
 fi
+if [[ -n "$DHP_DOCKER_NET_FROM_ENV" ]]; then
+    DHP_DOCKER_NET="$DHP_DOCKER_NET_FROM_ENV"
+fi
 if [[ -n "$DHP_EXPORT_ENV_FROM_ENV" ]]; then
     DHP_EXPORT_ENV="$DHP_EXPORT_ENV_FROM_ENV"
+fi
+
+if [[ -n DHP_DOCKER_NET ]]; then
+    ARG_NET="--net=${DHP_DOCKER_NET}"
 fi
