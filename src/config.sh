@@ -6,7 +6,7 @@ DHP_DOCKER_NET_FROM_ENV=${DHP_DOCKER_NET}
 DHP_EXPORT_ENV_FROM_ENV=${DHP_EXPORT_ENV}
 
 # Default values
-DHP_DOCKER_IMAGE="docker2o.itim.vn/library/php:7.0"
+DHP_DOCKER_IMAGE="php"
 
 ENV_FILE=".env"
 
