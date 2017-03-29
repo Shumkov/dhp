@@ -2,7 +2,7 @@ DHP. Docker PHP interpreter
 ======================
 
 DHP is a wrapper around a PHP docker container. It provides transparent
-work with Dockerized PHP as you work with usual local PHP interpreter.
+using containerized PHP as you use usual local PHP interpreter.
 
 P.S. i shit bash.
 

@@ -1,5 +1,5 @@
 {
-  "name": "coccoc/dhp",
+  "name": "shumkov/dhp",
   "description": "Docker PHP interpreter",
   "type": "library",
   "license": "proprietary",
