@@ -15,22 +15,16 @@ Installation
    export PATH=~/.composer/vendor/bin:$PATH
    ```
 
-3. Add repository to composer:
-
-   ```bash
-   composer global config repositories.dhp vcs https://git.itim.vn/coccoc/labs-dhp.git
-   ```
-
 3. Install DHP:
 
    ```bash
-   composer global require coccoc/dhp:*
+   composer global require shumkov/dhp:*
    ```
 
 Upgrade
 -------
 
-Run `composer global update coccoc/dhp`
+Run `composer global update shumkov/dhp`
 
 Using
 -----
@@ -57,4 +51,4 @@ You have three ways to set options:
 
 Author
 ------
-Ivan Shumkov <shumkov@coccoc.com>
+Ivan Shumkov <ivan@shumkov.ru>
