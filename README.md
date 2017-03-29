@@ -43,6 +43,7 @@ Configuration
 Available options:
  - `DHP_DOCKER_IMAGE` - Docker PHP image name. Default: `docker2o.itim.vn/library/php:7.0`
  - `DHP_EXPORT_ENV` - List of env variables to pass to php
+ - `DHP_DOCKER_NET` - Use existing docker network
 
 You have three ways to set options:
 1. As env variables in your shell. Example: `export DHP_EXPORT_ENV="APP_ENV"`
